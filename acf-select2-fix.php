@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: ACF Field Groups Select2 Fix
+ * Plugin URI: https://github.com/Jared-Nolt/acf-select2-fix
  * If you are unable to edit ACF Fields in Field Groups when Ultimate Member plugin is installed, this plugin re-initializes Select2 dropdowns on the ACF Field Groups page to fix conflicts with other plugins. Ultimate member article - https://docs.ultimatemember.com/article/1764-fix-dropdown-field-functionality
  * Version: 1.0.0
  * Author: Jared Nolt
