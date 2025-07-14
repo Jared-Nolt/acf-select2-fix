@@ -15,14 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class ACFFieldGroupsSelect2Fix
- * Handles enqueuing the JavaScript fix only on ACF Field Groups pages.
+ * Class ACFFieldGroupsSelect2Fix - Handles enqueuing the JavaScript fix only on ACF Field Groups pages.
  */
 class ACFFieldGroupsSelect2Fix {
 
     /**
-     * Constructor.
-     * Registers the necessary WordPress hooks.
+     * Constructor. Registers the necessary WordPress hooks.
      */
     public function __construct() {
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -30,29 +28,24 @@ class ACFFieldGroupsSelect2Fix {
 
     /**
      * Enqueues the JavaScript file.
-     *
      * @param string $hook_suffix The current admin page hook suffix.
      */
     public function enqueue_scripts( $hook_suffix ) {
-        // Get the current screen object.
         $screen = get_current_screen();
 
         // Check if we are on the ACF Field Groups page (edit or list screen).
         // The screen ID for editing a field group is 'acf-field-group'.
         // The screen ID for the list of field groups is 'edit-acf-field-group'.
         if ( $screen && ( $screen->id === 'acf-field-group' || $screen->id === 'edit-acf-field-group' ) ) {
-            // Enqueue the custom JavaScript file.
-            // It depends on 'jquery' and 'select2' which are typically loaded by WordPress/ACF.
             wp_enqueue_script(
-                'acf-select2-fix', // Unique handle for the script.
-                plugin_dir_url( __FILE__ ) . 'js/acf-select2-fix.js', // Path to the JS file.
-                array( 'jquery', 'select2' ), // Dependencies: jQuery and Select2.
-                '1.0.0', // Version number.
-                true // Load the script in the footer.
+                'acf-select2-fix',
+                plugin_dir_url( __FILE__ ) . 'js/acf-select2-fix.js',
+                array( 'jquery', 'select2' ),
+                '1.0.0',
+                true
             );
         }
     }
 }
 
-// Instantiate the plugin class to start its functionality.
 new ACFFieldGroupsSelect2Fix();
